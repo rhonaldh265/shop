@@ -1,20 +1,21 @@
-# Use the official PHP image with Apache
+# Use official PHP + Apache image
 FROM php:8.2-apache
 
-# Copy project files into Apache directory
-COPY . /var/www/html/
-
 # Set working directory
-WORKDIR /var/www/html/
+WORKDIR /var/www/html
 
-# Make uploads writable
+# Copy project files
+COPY . /var/www/html
+
+# Make uploads directory writable
 RUN mkdir -p uploads && chmod -R 777 uploads
 
-# Tell Apache to listen on port 8080 (Render requirement)
-RUN sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
+# Force Apache to listen on port 8080 (Render requirement)
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
+    && sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
 
 # Expose 8080 for Render
 EXPOSE 8080
 
-# Start Apache in foreground
+# Start Apache
 CMD ["apache2-foreground"]
