@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Towetts Collection</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Towetts Collection</h1>
+    <a href="#upload" class="btn">Admin Upload</a>
+  </nav>
+
+  <section class="product-grid">
+    <div class="product">
+      <img src="uploads/sample1.jpg" alt="Product 1">
+      <h3>Classic T-shirt</h3>
+      <p>Ksh 700</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="uploads/sample2.jpg" alt="Product 2">
+      <h3>Men’s Sneakers</h3>
+      <p>Ksh 2500</p>
+      <button>Add to Cart</button>
+    </div>
+  </section>
+
+  <section id="upload" class="upload-section">
+    <h2>Upload New Product</h2>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Product Name" required />
+      <input type="number" name="price" placeholder="Price (Ksh)" required />
+      <input type="file" name="image" accept="image/*" required />
+      <button type="submit">Upload</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Towetts Collection. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
