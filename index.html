@@ -5,11 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Towetts Collection</title>
   <link rel="stylesheet" href="style.css" />
+  <script>
+    function unlockAdmin() {
+      const key = prompt("Enter admin access key:");
+      if (key === "root254") {
+        document.getElementById("upload-section").style.display = "block";
+        alert("Admin access granted ✅");
+      } else {
+        alert("Incorrect key ❌");
+      }
+    }
+  </script>
 </head>
 <body>
   <nav class="navbar">
     <h1>Towetts Collection</h1>
-    <a href="#upload" class="btn">Admin Upload</a>
+    <button onclick="unlockAdmin()" class="btn">Admin Panel</button>
   </nav>
 
   <section class="product-grid">
@@ -27,13 +38,13 @@
     </div>
   </section>
 
-  <section id="upload" class="upload-section">
+  <section id="upload-section" class="upload-section" style="display: none;">
     <h2>Upload New Product</h2>
     <form action="upload.php" method="POST" enctype="multipart/form-data">
       <input type="text" name="name" placeholder="Product Name" required />
       <input type="number" name="price" placeholder="Price (Ksh)" required />
       <input type="file" name="image" accept="image/*" required />
-      <button type="submit">Upload</button>
+      <button type="submit">Upload Product</button>
     </form>
   </section>
 
